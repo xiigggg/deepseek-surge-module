@@ -1,6 +1,6 @@
 #!name=DeepSeek 余额查询
 #!desc=定时查询 DeepSeek API 余额，面板展示 + 低余额通知。需填入 API Key（从 platform.deepseek.com/api_keys 获取）
-#!arguments=API_KEY=&LOW_THRESHOLD=5
+#!arguments = API_KEY="sk-...", LOW_THRESHOLD="5"
 
 [Script]
 DeepSeek-Balance-Cron = type=cron, cronexp="0 */6 * * *", script-path=deepseek-balance.js, argument=api_key=%API_KEY%&threshold=%LOW_THRESHOLD%
