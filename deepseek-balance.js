@@ -12,7 +12,7 @@ const argStr = typeof $argument !== "undefined" ? $argument : "";
 const args = {};
 argStr.split("&").forEach(pair => {
     const [k, v] = pair.split("=");
-    if (k) args[k] = decodeURIComponent(v || "");
+    if (k) args[k] = decodeURIComponent(v || "").replace(/^"|"$/g, "");
 });
 
 const API_KEY = args.api_key || "";
