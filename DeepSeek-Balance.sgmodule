@@ -1,13 +1,12 @@
 #!name=DeepSeek 余额查询
-#!desc=定时查询 DeepSeek API 余额，面板展示 + 低余额通知。需填入 API Key（从 platform.deepseek.com/api_keys 获取）
-#!arguments = API_KEY="sk-...", LOW_THRESHOLD="5"
+#!desc=定时查询 DeepSeek API 余额，面板展示 + 低余额通知。
+#!category=📊 工具
+#!arguments=API_KEY:sk-...,LOW_THRESHOLD:5
+#!arguments-desc=API_KEY: 从 platform.deepseek.com/api_keys 获取\nLOW_THRESHOLD: 低于该余额（元）时推送通知
 
 [Script]
-DeepSeek-Balance-Cron = type=cron, cronexp="0 */6 * * *", script-path=deepseek-balance.js, argument=api_key=%API_KEY%&threshold=%LOW_THRESHOLD%
-DeepSeek-Balance-Panel = type=generic, script-path=deepseek-panel.js, argument=api_key=%API_KEY%&threshold=%LOW_THRESHOLD%
+DeepSeek-Balance-Cron = type=cron, cronexp="0 */6 * * *", script-path=deepseek-balance.js, argument=api_key={{{API_KEY}}}&threshold={{{LOW_THRESHOLD}}}
+DeepSeek-Balance-Panel = type=generic, script-path=deepseek-panel.js, argument=api_key={{{API_KEY}}}&threshold={{{LOW_THRESHOLD}}}
 
 [Panel]
 💎 DeepSeek 余额 = script-name=DeepSeek-Balance-Panel, update-interval=3600
-
-[MITM]
-; 无需 MITM，脚本通过 $httpClient 直连 API
