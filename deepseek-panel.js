@@ -31,35 +31,11 @@
     // --- 面板渲染函数 ---
     function renderPanel(info, threshold, symbol) {
         const totalVal = parseFloat(info.total_balance);
-        const grantedVal = parseFloat(info.granted_balance);
-        const toppedUpVal = parseFloat(info.topped_up);
         const isLow = totalVal < threshold;
-        const pct = Math.min(100, Math.max(0, Math.round((totalVal / (threshold * 2)) * 100)));
-
-        // 进度条
-        const barLen = 20;
-        const fillLen = Math.round((pct / 100) * barLen);
-        const bar = "█".repeat(fillLen) + "░".repeat(barLen - fillLen);
-
-        const timeStr = lastCheck
-            ? new Date(lastCheck).toLocaleString("zh-CN", { timeZone: "Asia/Shanghai" })
-            : "未知";
-
-        const content = [
-            `${isLow ? "🔴" : "🟢"} 余额: ${symbol}${totalVal.toFixed(2)}`,
-            ``,
-            `[${bar}] ${pct}%`,
-            ``,
-            `🎁 赠送余额: ${symbol}${grantedVal.toFixed(2)}`,
-            `💰 充值余额: ${symbol}${toppedUpVal.toFixed(2)}`,
-            ``,
-            `⏰ 更新时间: ${timeStr}`,
-            `${isLow ? "\n⚠️ 余额低于阈值 " + symbol + threshold + "，建议充值" : ""}`,
-        ].join("\n");
 
         $done({
-            title: (isLow ? "🔴" : "💎") + " DeepSeek " + symbol + totalVal.toFixed(2),
-            content: content,
+            title: "💎 DeepSeek",
+            content: `${isLow ? "🔴" : "🟢"} 余额: ${symbol}${totalVal.toFixed(2)}`,
             icon: isLow ? "exclamationmark.triangle" : "dollarsign.circle",
             color: isLow ? "#ff6b6b" : "#4ecdc4",
         });
