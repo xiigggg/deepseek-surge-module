@@ -5,8 +5,8 @@
 #!arguments-desc=API_KEY: [密钥] DeepSeek API Key\n    从 platform.deepseek.com/api_keys 获取。\n\nLOW_THRESHOLD: [阈值] 低余额通知线（元）\n    账户余额低于该值时推送通知，默认 5。
 
 [Script]
-DeepSeek-Balance-Cron = type=cron, cronexp="0 */6 * * *", script-path=deepseek-balance.js, argument=api_key="{{{API_KEY}}}"&threshold="{{{LOW_THRESHOLD}}}"
-DeepSeek-Balance-Panel = type=generic, script-path=deepseek-panel.js, argument=api_key="{{{API_KEY}}}"&threshold="{{{LOW_THRESHOLD}}}"
+DeepSeek-Balance-Cron = type=cron, cronexp="0 */6 * * *", script-path=https://raw.githubusercontent.com/xiigggg/deepseek-surge-module/master/deepseek-balance.js, argument=api_key="{{{API_KEY}}}"&threshold="{{{LOW_THRESHOLD}}}"
+DeepSeek-Balance-Panel = type=generic, script-path=https://raw.githubusercontent.com/xiigggg/deepseek-surge-module/master/deepseek-panel.js, argument=api_key="{{{API_KEY}}}"&threshold="{{{LOW_THRESHOLD}}}"
 
 [Panel]
 💎 DeepSeek 余额 = script-name=DeepSeek-Balance-Panel, update-interval=3600
