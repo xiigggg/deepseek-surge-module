@@ -26,6 +26,7 @@ if (!API_KEY) {
         "请在模块参数中填入 API_KEY"
     );
     $done();
+    return;
 }
 
 const url = "https://api.deepseek.com/user/balance";
